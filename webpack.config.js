@@ -17,7 +17,7 @@ module.exports = {
     open: true,
     hot: true,
   },
-  entry: path.resolve(__dirname, 'src', 'index.js'),
+  entry: path.resolve(__dirname, 'src', 'index.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
@@ -103,15 +103,15 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.m?js$/i,
+        test: /\.m?(j|t)s$/i,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
+          loader: 'ts-loader',
         },
       },
     ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };
